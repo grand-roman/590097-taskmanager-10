@@ -1,8 +1,10 @@
+'use strict';
+
 const TASK_COUNT = 3;
 
 const createFilterTemplate = () => {
-  return(
-     `<section class="main__filter filter container">
+  return (
+    `<section class="main__filter filter container">
         <input
           type="radio"
           id="filter__all"
@@ -70,12 +72,12 @@ const createFilterTemplate = () => {
           >Archive <span class="filter__archive-count">115</span></label
         >
       </section>`
-    );
+  );
 };
 
 const createBoardTemplate = () => {
-  return(
-     `<section class="board container">
+  return (
+    `<section class="board container">
         <div class="board__filter-list">
           <a href="#" class="board__filter">SORT BY DEFAULT</a>
           <a href="#" class="board__filter">SORT BY DATE up</a>
@@ -84,11 +86,11 @@ const createBoardTemplate = () => {
 
         <div class="board__tasks"></div>
       </section>`
-    );
+  );
 };
 
 const createTaskTemplate = () => {
-  return(
+  return (
     `<article class="card card--black">
             <div class="card__form">
               <div class="card__inner">
@@ -114,7 +116,7 @@ const createTaskTemplate = () => {
                 </div>
 
                 <div class="card__textarea-wrap">
-                  <p class="card__text">Example default task without date and hashtags.</p>
+                  <p class="card__text">Example default task without date and hashtags.</p>                 
                 </div>
 
                 <div class="card__settings">
@@ -123,12 +125,12 @@ const createTaskTemplate = () => {
               </div>
             </div>
           </article>`
-    );
+  );
 };
 
 const createSiteMenuTemplate = () => {
   return (
-      `<section class="control__btn-wrap">
+    `<section class="control__btn-wrap">
           <input
             type="radio"
             name="control"
@@ -156,12 +158,12 @@ const createSiteMenuTemplate = () => {
             >STATISTICS</label
           >
         </section>`
-    );
+  );
 };
 
 const createTaskEditTemplate = () => {
-  return(
-      `<article class="card card--edit card--yellow card--repeat">
+  return (
+    `<article class="card card--edit card--yellow card--repeat">
             <form class="card__form" method="get">
               <div class="card__inner">
                 <div class="card__color-bar">
@@ -416,36 +418,32 @@ const createTaskEditTemplate = () => {
               </div>
             </form>
           </article>`
-    );
-}
+  );
+};
 
 const createLoadMoreButtonTemplate = () => {
   return (
-      '<button class="load-more" type="button">load more</button>'
-    );
+    `<button class="load-more" type="button">load more</button>`
+  );
 };
-
-
-
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
 
-const siteMainElement = document.querySelector('.main');
-const siteHeaderElement = siteMainElement.querySelector('.main__control');
+const siteMainElement = document.querySelector(`.main`);
+const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 
-render(siteHeaderElement, createSiteMenuTemplate(), 'beforeend')
-render(siteMainElement, createFilterTemplate(), 'beforeend')
-render(siteMainElement, createBoardTemplate(), 'beforeend')
+render(siteHeaderElement, createSiteMenuTemplate(), `beforeend`);
+render(siteMainElement, createFilterTemplate(), `beforeend`);
+render(siteMainElement, createBoardTemplate(), `beforeend`);
 
-const taskListElement = siteMainElement.querySelector('.board__tasks')
-render(taskListElement, createTaskEditTemplate(), 'beforeend')
+const taskListElement = siteMainElement.querySelector(`.board__tasks`);
+render(taskListElement, createTaskEditTemplate(), `beforeend`);
 
 new Array(TASK_COUNT).fill(``).forEach(
-    () => render(taskListElement, createTaskTemplate(), 'beforeend')
-  );
+    () => render(taskListElement, createTaskTemplate(), `beforeend`));
 
-const boardElement = siteMainElement.querySelector('.board')
+const boardElement = siteMainElement.querySelector(`.board`);
 
-render(boardElement, createLoadMoreButtonTemplate(), 'beforeend')
+render(boardElement, createLoadMoreButtonTemplate(), `beforeend`);
