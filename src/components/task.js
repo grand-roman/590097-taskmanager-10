@@ -1,5 +1,4 @@
-import {MonthNames} from '../const.js';
-import {formatTime} from '../utils.js';
+import {createDateForTaskTemplate} from "./date-time";
 
 
 const createHashtagsMarkup = (hashtags) => {
@@ -20,11 +19,7 @@ const createHashtagsMarkup = (hashtags) => {
 export const createTaskTemplate = (task) => {
   const {description, tags, dueDate, color, repeatingDays} = task;
 
-  const isExpired = dueDate instanceof Date && dueDate < Date.now();
-  const isDateShowing = !!dueDate;
-
-  const date = isDateShowing ? `${dueDate.getDate()} ${MonthNames[dueDate.getMonth()]}` : ``;
-  const time = isDateShowing ? formatTime(dueDate) : ``;
+  const [isExpired, isDateShowing, date, time] = createDateForTaskTemplate(dueDate);
 
   const hashtags = createHashtagsMarkup(Array.from(tags));
   const repeatClass = Object.values(repeatingDays).some(Boolean) ? `card--repeat` : ``;
