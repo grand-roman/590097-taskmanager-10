@@ -8,7 +8,6 @@ export const createDateForTaskTemplate = (dueDate) => {
 
   const date = isDateShowing ? `${dueDate.getDate()} ${MonthNames[dueDate.getMonth()]}` : ``;
   const time = isDateShowing ? formatTime(dueDate) : ``;
-
-  return(isExpired, isDateShowing, date, time);
+  return (date, time, isExpired, isDateShowing);
 };
 
