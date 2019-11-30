@@ -74,7 +74,7 @@ export const createTaskEditTemplate = (task) => {
 
   const {description, tags, dueDate, color, repeatingDays} = task;
 
-  const [date, time, isExpired, isDateShowing] = createDateForTaskTemplate(dueDate);
+  const {date, time, isExpired, isDateShowing} = createDateForTaskTemplate(dueDate);
 
   const isRepeatingTask = Object.values(repeatingDays).some(Boolean);
   const repeatClass = isRepeatingTask ? `card--repeat` : ``;

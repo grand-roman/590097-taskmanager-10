@@ -19,7 +19,7 @@ const createHashtagsMarkup = (hashtags) => {
 export const createTaskTemplate = (task) => {
   const {description, tags, dueDate, color, repeatingDays} = task;
 
-  const [date, time, isExpired] = createDateForTaskTemplate(dueDate);
+  const {date, time, isExpired} = createDateForTaskTemplate(dueDate);
 
   const hashtags = createHashtagsMarkup(Array.from(tags));
   const repeatClass = Object.values(repeatingDays).some(Boolean) ? `card--repeat` : ``;
